@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: Sample Controller
+  description: validate schema refresh issue
+  version: 1.0.0
+paths:
+  /v1/employee-details:
+    get:
+      summary: Get employee details
+      operationId: viewEmpDetails
+      tags:
+        - fetchEmpDetails
+      parameters:
+        - name: employeeName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: employee details fetched sucessfully.
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/searchResults.yml"
+        '500':
+          description: Error while processing the request

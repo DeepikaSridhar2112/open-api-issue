@@ -1,0 +1,60 @@
+type: object
+required:
+  - schemaVersion
+  - empDetails
+  - recordsCount
+properties:
+  schemaVersion:
+    type: string
+    description: The version of this schema, minor version bumps indicates non breaking changes (new elements) major version bumps indicates a breaking change
+    example: '1.0'
+  empDetails:
+    type: array
+    description: Details of employees matched
+    items:
+      type: object
+      required:
+        - primaryDetails
+        - deptDetails
+      properties:
+        primaryDetails:
+          type: object
+          description: Employee primary details
+          required:
+            - employeeId
+            - firstName
+            - lastName
+          properties:
+            employeeId:
+              type: integer
+              description: Employee id field
+              format: int32
+              example: 1
+            firstName:
+              type: string
+              description: first name of the employee
+              example: 'john'
+            lastName:
+              type: string
+              description: Lastname of the employee
+              example: 's'
+        deptDetails:
+          type: object
+          description: deparment details
+          required:
+            - deptId
+            - deptName
+          properties:
+            deptId:
+              type: integer
+              description: dept id field
+              format: int32
+              example: 1
+            deptName:
+              type: string
+              description: department name
+              example: 'research'
+  recordsCount:
+    type: number
+    description: count of records matched
+    example: 10
